@@ -6,6 +6,7 @@ export default function GenerateCharacters() {
   const [displayedCharacters, setDisplayedCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
 
   const shuffleAndSetCharacters = (allCharacters) => {
     let shuffled = allCharacters
@@ -61,6 +62,8 @@ export default function GenerateCharacters() {
 
   const handleCardClick = (clickedCharacter) => {
     // Add a true selected value to the clicked on GOT character card
+    
+
     setCharacters((previousCharacters) => {
       return previousCharacters.map((char) =>
         char.id === clickedCharacter.id ? { ...char, selected: true } : char
@@ -74,9 +77,12 @@ export default function GenerateCharacters() {
       // Increment the users score by 1
 
       setScore((prevCount) => prevCount + 1);
+    
       console.log(clickedCharacter);
     } else {
       setScore(0);
+      setBestScore((prevBest) => Math.max(prevBest, score + 1));
+
       console.log("you lost");
       // Reset all selected values of GOT characters to false
       setCharacters((prev) => prev.map((char) => ({ ...char, selected: false })));
@@ -94,6 +100,7 @@ export default function GenerateCharacters() {
   return (
     <div className="App">
       <h1>Game of Thrones Memory Game</h1>
+      <p>Score: {score} || Best Score: {bestScore}</p>
       <ul>
         {displayedCharacters.map((character) => (
           <div
