@@ -31,6 +31,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url('src/assets/got-background.jpg');
+  background-size: cover;
 }
 
 h1 {
@@ -55,6 +57,11 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.avatar img {
+  width: 120px;
+  height: 120px;
 }
 
 @media (prefers-color-scheme: light) {

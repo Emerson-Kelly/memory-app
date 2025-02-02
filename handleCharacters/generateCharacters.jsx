@@ -58,11 +58,8 @@ export default function GenerateCharacters() {
   //console.log(characters.map((character) => (character.selected)));
   //console.log(characters);
 
-  
-
   const handleCardClick = (clickedCharacter) => {
     // Add a true selected value to the clicked on GOT character card
-    
 
     setCharacters((previousCharacters) => {
       return previousCharacters.map((char) =>
@@ -77,7 +74,7 @@ export default function GenerateCharacters() {
       // Increment the users score by 1
 
       setScore((prevCount) => prevCount + 1);
-    
+
       console.log(clickedCharacter);
     } else {
       setScore(0);
@@ -85,7 +82,9 @@ export default function GenerateCharacters() {
 
       console.log("you lost");
       // Reset all selected values of GOT characters to false
-      setCharacters((prev) => prev.map((char) => ({ ...char, selected: false })));
+      setCharacters((prev) =>
+        prev.map((char) => ({ ...char, selected: false }))
+      );
     }
 
     shuffleAndSetCharacters(characters);
@@ -98,21 +97,31 @@ export default function GenerateCharacters() {
   }
 
   return (
-    <div className="App">
-      <h1>Game of Thrones Memory Game</h1>
-      <p>Score: {score} || Best Score: {bestScore}</p>
-      <ul>
-        {displayedCharacters.map((character) => (
-          <div
-            key={character.id}
-            onClick={() => handleCardClick(character)}
-            className="character-card"
-          >
-            <img src={character.imageUrl} alt={character.fullName} width="50" />
-            <p>{character.fullName}</p>
-          </div>
-        ))}
-      </ul>
+    <div className="App flex flex-col items-center justify-center min-h-screen w-screen w-full">
+      <div className="m-auto w-6xl text-center flex flex-col gap-4">
+        <h1 className="text-3xl font-bold">Game of Thrones Memory Game</h1>
+        <p className="text-xl my-4">
+          Score: <span className="font-semibold">{score}</span> || Best Score:{" "}
+          <span className="font-semibold">{bestScore}</span>
+        </p>
+        <ul className="grid grid-cols-5 grid-rows-2 gap-4">
+          {displayedCharacters.map((character) => (
+            <div
+              key={character.id}
+              onClick={() => handleCardClick(character)}
+              className="flex flex-col items-center cursor-pointer"
+            >
+              <img
+                className="w-48 h-48 rounded-full object-cover object-top border-2 border-gray-300 hover:border-gray-500"
+                src={character.imageUrl}
+                alt={character.fullName}
+              />
+
+              <p className="mt-2 font-bold text-lg">{character.fullName}</p>
+            </div>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
