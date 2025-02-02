@@ -97,14 +97,14 @@ export default function GenerateCharacters() {
   }
 
   return (
-    <div className="App flex flex-col items-center justify-center min-h-screen w-screen w-full">
-      <div className="m-auto w-6xl text-center flex flex-col gap-4">
-        <h1 className="text-3xl font-bold">Game of Thrones Memory Game</h1>
+    <div className="App flex flex-col items-center justify-center min-h-screen w-screen w-full p-4">
+      <div className="m-auto max-w-6xl text-center flex flex-col gap-4">
+        <h2 className="text-3xl font-bold">Game of Thrones Memory Game</h2>
         <p className="text-xl my-4">
           Score: <span className="font-semibold">{score}</span> || Best Score:{" "}
           <span className="font-semibold">{bestScore}</span>
         </p>
-        <ul className="grid grid-cols-5 grid-rows-2 gap-4">
+        <ul className="grid grid-cols-3 grid-rows-4 gap-4 sm:grid-cols-5 sm:grid-rows-2">
           {displayedCharacters.map((character) => (
             <div
               key={character.id}
@@ -112,7 +112,7 @@ export default function GenerateCharacters() {
               className="flex flex-col items-center cursor-pointer"
             >
               <img
-                className="w-48 h-48 rounded-full object-cover object-top border-2 border-gray-300 hover:border-gray-500"
+                className="w-full max-w-[100px] sm:max-w-[150px] md:max-w-[180px] lg:max-w-[200px] aspect-square rounded-full object-cover object-top border-2 border-gray-300 hover:border-gray-500"
                 src={character.imageUrl}
                 alt={character.fullName}
               />

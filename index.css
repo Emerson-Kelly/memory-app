@@ -16,6 +16,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -33,6 +35,7 @@ body {
   min-height: 100vh;
   background-image: url('src/assets/got-background.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 h1 {
@@ -76,3 +79,5 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
